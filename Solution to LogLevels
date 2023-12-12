@@ -1,0 +1,39 @@
+public class LogLevels {
+    String logLine = "[ERROR]: You a hoe";
+    public static String str;
+    
+    public static String message(String logLine) {
+        if(logLine.charAt(1) == 'E'){
+        str = logLine.substring(9).trim();
+            }else if(logLine.charAt(1)== 'W'){
+       str = logLine.substring(11).trim();
+            }else if(logLine.charAt(1) == 'I'){
+        str = logLine.substring(8).trim();
+            }
+        return str;
+        }
+
+    public static String logLevel(String logLine) {
+        String level = null;
+        if(logLine.contains("ERROR")){
+        level = logLine.substring(1,6).toLowerCase();
+        return level;
+        }else if(logLine.contains("WARNING")){
+            level = logLine.substring(1,8).toLowerCase();
+        }else if(logLine.contains("INFO")){
+            level = logLine.substring(1,5).toLowerCase();
+        }
+        return level;
+        
+}
+    
+    public static String reformat(String logLine) {
+        String logLevel = null;
+        String logMessage = null;
+        String log = logLine.replaceAll("\t ","");
+        logLevel = logLevel(logLine);
+        logMessage = message(logLine);
+        return logMessage + " " + "("+logLevel+")";
+        
+}
+}
