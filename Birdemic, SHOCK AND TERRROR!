@@ -1,0 +1,51 @@
+import java.util.Arrays;
+class BirdWatcher {
+    private final int[] birdsPerDay;
+    public BirdWatcher(int[] birdsPerDay) {
+        this.birdsPerDay = birdsPerDay.clone();
+    }
+
+    public int[] getLastWeek() {
+        return this.birdsPerDay;
+    }
+
+    public int getToday() {
+        return this.birdsPerDay[this.birdsPerDay.length -1];
+    }
+
+    public void incrementTodaysCount() {
+        this.birdsPerDay[this.birdsPerDay.length -1]++;
+    }
+
+    public boolean hasDayWithoutBirds() {
+        boolean noBirds = false;
+        for(int birds : this.birdsPerDay){
+            if(birds == 0){
+                noBirds = true;
+                }
+        }
+        return noBirds;
+    }
+
+    public int getCountForFirstDays(int numberOfDays) {
+        int sum = 0;
+        if(numberOfDays -1 > this.birdsPerDay.length){
+        sum = Arrays.stream(this.birdsPerDay).sum();
+        }else{
+        for(int i = 0; numberOfDays -1 >= i; i++){
+                sum += this.birdsPerDay[i];
+            }
+        }
+        return sum;
+        }
+    
+    public int getBusyDays() {
+        int busyDays = 0;
+        for(int days : this.birdsPerDay){
+            if(days >= 5){
+                busyDays++;
+            }
+        }
+        return busyDays;
+    }
+}
