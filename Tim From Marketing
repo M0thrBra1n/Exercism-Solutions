@@ -1,0 +1,25 @@
+class Badge {
+    public String print(Integer id, String name, String department) {
+         String[] names = name.split(" ");
+         String firstName = names[0];
+         firstName = firstName.substring(0,1).toUpperCase() + firstName.substring(1);
+         String lastName = names[1];
+         lastName = lastName.substring(0,1).toUpperCase() + lastName.substring(1);
+        if(department != null){
+        department = department.toUpperCase();
+            }else if(department == null && id == null){
+            return String.format("%s %s - OWNER", 
+                firstName, lastName);
+}
+    if(id == null){
+            return String.format("%s %s - %s",
+                                firstName, lastName, department);
+    }else if(department == null){
+            return String.format("[%d] - %s %s - OWNER", 
+                id, firstName, lastName);
+}
+        
+            return String.format("[%d] - %s %s - %s",
+                id, firstName, lastName, department );    
+}
+}
