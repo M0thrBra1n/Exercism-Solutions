@@ -1,0 +1,25 @@
+public class SalaryCalculator {
+
+    public static double salary;
+
+    double salaryMultiplier(int daysSkipped) {
+        salary = 1;
+        return daysSkipped < 5 ? salary : salary * .85;
+
+    }
+
+    public int bonusMultiplier(int productsSold) {
+        return productsSold >= 20 ? 13 : 10;
+    }
+
+    public double bonusForProductsSold(int productsSold) {
+        return productsSold * bonusMultiplier(productsSold);
+
+    }
+
+    public double finalSalary(int daysSkipped, int productsSold) {
+
+        double totalPay = 1000 * salaryMultiplier(daysSkipped) + bonusForProductsSold(productsSold);
+        return totalPay <= 2000 ? totalPay : 2000;
+    }
+}
