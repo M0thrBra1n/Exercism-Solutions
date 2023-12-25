@@ -1,0 +1,56 @@
+class NeedForSpeed {
+    
+    private int speed;
+    private int batteryDrain;
+    private int totalDistance = 0;
+    private int batteryLevel = 100;
+    
+    NeedForSpeed(int speed, int batteryDrain) {
+        this.speed = speed;
+        this.batteryDrain = batteryDrain;
+    }
+
+    public boolean batteryDrained() {
+        return batteryLevel <= 0;
+    }
+
+    public int distanceDriven() {
+        return this.totalDistance;
+    }
+
+    public void drive() {
+        if(!batteryDrained()) {
+            this.totalDistance += this.speed;
+            this.batteryLevel -= this.batteryDrain;
+        }
+    }
+
+    public static NeedForSpeed nitro() {
+        NeedForSpeed nitro = new NeedForSpeed(50,4);
+        return nitro;
+    }
+}
+
+class RaceTrack {
+    private int distance;
+
+    RaceTrack(int distance) {
+        this.distance = distance;
+    }
+
+    public boolean tryFinishTrack(NeedForSpeed car) {
+        while (!car.batteryDrained() && car.distanceDriven() <= this.distance) {
+            car.drive();
+            if(car.distanceDriven() >= this.distance){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args){
+        RaceTrack daytona = new RaceTrack(100);
+        NeedForSpeed car = new NeedForSpeed(9,50);
+        System.out.println(daytona.tryFinishTrack(car));
+        System.out.println(car.distanceDriven());
+    }
+}
