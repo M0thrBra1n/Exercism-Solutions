@@ -35,19 +35,13 @@ class Wizard extends Fighter {
 
     @Override
     boolean isVulnerable() {
-        if(!spellPrepared){
-            return true;
+    return spellPrepared ? false:true;
         }
-        return false;
-    }
 
     @Override
     int damagePoints(Fighter fighter) {
-        if(spellPrepared) {
-            return 12;
+        return spellPrepared ? 12:3;
         }
-        return 3;
-    }
 
     void prepareSpell() {
         spellPrepared = true;
