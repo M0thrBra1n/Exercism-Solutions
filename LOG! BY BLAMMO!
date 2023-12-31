@@ -1,0 +1,60 @@
+enum LogLevel{WARNING("5"),INFO("4"),FATAL("42"),ERROR("6"),TRACE("1"),DEBUG("2"),UNKNOWN("0");
+private final String number;
+LogLevel(String number){
+    this.number = number;
+}
+public String getNumber(){
+    return this.number;
+}
+             }
+
+
+
+
+public class LogLine{
+    public static String logLine;
+   public LogLine(String logLine){
+       this.logLine = logLine;
+   }
+
+    public static LogLevel getLogLevel(){
+        String parsed = logLine.substring(1,4);
+        switch(parsed){
+            case "WRN":
+                return LogLevel.WARNING;
+            case "TRC":
+                return LogLevel.TRACE;
+            case "DBG":
+                return LogLevel.DEBUG;
+            case "FTL":
+                return LogLevel.FATAL;
+            case "ERR":
+                return LogLevel.ERROR;
+            case "INF":
+                return LogLevel.INFO;
+            default: return LogLevel.UNKNOWN;
+        }
+    }
+   
+public String getOutputForShortLog(){
+     String splitLogs1 = logLine.substring(1,4);
+       String splitLogs2 = ":" + logLine.substring(7);
+       switch(splitLogs1){
+           case "WRN":
+               return LogLevel.WARNING.getNumber() + splitLogs2;
+           case "TRC":
+               return LogLevel.TRACE.getNumber() + splitLogs2;
+           case "FTL":
+               return LogLevel.FATAL.getNumber() + splitLogs2;
+           case "DBG":
+               return LogLevel.DEBUG.getNumber() + splitLogs2;
+           case "ERR":
+               return LogLevel.ERROR.getNumber() + splitLogs2;
+           case"INF":
+               return LogLevel.INFO.getNumber() + splitLogs2;
+           default:
+               return LogLevel.UNKNOWN.getNumber() + splitLogs2;
+       }
+
+    }
+        }
