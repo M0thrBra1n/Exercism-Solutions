@@ -1,59 +1,21 @@
-class AnnalynsInfiltration {
-    public static boolean knightIsAwake;
-    public static boolean archerIsAwake;
-    public static boolean prisonerIsAwake;
-    public static boolean petDogIsPresent;
 
-    public static boolean canFastAttack(boolean knightIsAwake) {
-        if (knightIsAwake) {
-            return false;
-            //System.out.println(canFastAttack(knightIsAsleep));
-        } else {
-            return true;
-        }
-    }
-    public static boolean canSpy(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake){
-        if(knightIsAwake && archerIsAwake && prisonerIsAwake){
-            return true;
-            }else if (!knightIsAwake && archerIsAwake && prisonerIsAwake){
-            return true;
-            }else if(!knightIsAwake && !archerIsAwake && prisonerIsAwake){
-            return true;
-            }else if(knightIsAwake && !archerIsAwake && prisonerIsAwake){
-            return true;
-            }else if(knightIsAwake && archerIsAwake && !prisonerIsAwake){
-            return true;
-            }else if(knightIsAwake && !archerIsAwake && !prisonerIsAwake){
-            return true;
-            }else if(!knightIsAwake && archerIsAwake && !prisonerIsAwake){
-            return true;
-            }else{
-            return false;
+  class AnnalynsInfiltration {
+      
+        public static boolean canFastAttack(boolean knightIsAwake) {
+            return !knightIsAwake ? true:false;
             }
+      
+        public static boolean canSpy(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake){
+            return (!knightIsAwake && !archerIsAwake && !prisonerIsAwake) ? false:true;
+            }
+      
+        public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake){
+            return (!archerIsAwake && prisonerIsAwake) ? true:false;
         }
-    public static boolean canSignalPrisoner(boolean archerIsAwake, boolean prisonerIsAwake){
-        if(!archerIsAwake && prisonerIsAwake){
-            return true;
-        }else{
-            return false;
+      
+        public static boolean canFreePrisoner(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake, boolean petDogIsPresent){
+       return (petDogIsPresent && !archerIsAwake) || (!petDogIsPresent && prisonerIsAwake && !knightIsAwake && !archerIsAwake) ? true:false;
         }
-        }
-    public static boolean canFreePrisoner(boolean knightIsAwake, boolean archerIsAwake, boolean prisonerIsAwake, boolean petDogIsPresent){
-        if(knightIsAwake && !archerIsAwake && prisonerIsAwake && petDogIsPresent){
-            return true;
-        }else if(!knightIsAwake && !archerIsAwake && !prisonerIsAwake && petDogIsPresent){
-            return true;
-        }else if(knightIsAwake && !archerIsAwake && !prisonerIsAwake && petDogIsPresent){
-            return true;
-        }else if(!knightIsAwake && !archerIsAwake && prisonerIsAwake && petDogIsPresent){
-            return true;
-        }else if(!knightIsAwake && !archerIsAwake && prisonerIsAwake && !petDogIsPresent){
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public static void main(String[] args){
-
-    }
+public static void main(String[] args){
 }
+            }
